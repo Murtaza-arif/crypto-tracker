@@ -1,0 +1,6 @@
+Flask
+mysql-connector
+apscheduler
+requests
+Flask-Mail
+python-dotenv
