@@ -22,10 +22,10 @@ config = {
 
 app = Flask(__name__)
 # mailer config
-app.config['MAIL_SERVER'] = 'smtp.mailtrap.io'
-app.config['MAIL_PORT'] = 2525
-app.config['MAIL_USERNAME'] = os.environ['MAIL_USERNAME']
-app.config['MAIL_PASSWORD'] = os.environ['MAIL_PASSWORD']
+app.config['MAIL_SERVER'] = os.environ['host']
+app.config['MAIL_PORT'] = int(os.environ['port'])
+app.config['MAIL_USERNAME'] = os.environ['username']
+app.config['MAIL_PASSWORD'] = os.environ['password']
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 

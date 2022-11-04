@@ -6,8 +6,11 @@ services:
       - EMAIL_ID=${EMAIL_ID}
       - MAX_PRICE=${MAX_PRICE}
       - MIN_PRICE=${MIN_PRICE}
-      - MAIL_USERNAME=${MAIL_USERNAME}
-      - MAIL_PASSWORD=${MAIL_PASSWORD}
+      - username=${username}
+      - password=${password}
+      - host=${host}
+      - port=${port}
+
 
     links:
       - db
