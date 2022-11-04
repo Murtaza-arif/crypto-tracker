@@ -11,7 +11,7 @@ from flask import Flask, request
 from flask_mail import Mail, Message
 
 load_dotenv()
-
+# database config
 config = {
     'user': 'root',
     'password': 'root',
@@ -21,6 +21,7 @@ config = {
 }
 
 app = Flask(__name__)
+# mailer config
 app.config['MAIL_SERVER'] = 'smtp.mailtrap.io'
 app.config['MAIL_PORT'] = 2525
 app.config['MAIL_USERNAME'] = os.environ['MAIL_USERNAME']
@@ -58,7 +59,8 @@ def prices(date, offset, limit) -> List[Dict]:
         created_at)} for (name, price, created_at) in cursor]
   
     cursor.execute(get_query("count(name) as count", where,""))
-    total = cursor.fetchone()
+    total = cursor.fetchone() # fetch total enteries
+    
     current = get_pagination_url(date, offset, limit)
     next = get_pagination_url(date, int(offset)+int(limit), limit)
 
@@ -82,7 +84,7 @@ def btc_prices() -> str:
 
     return response
 
-
+# fetch bitcoin price 
 def get_bitcoin_price():
     r = requests.get(
         "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_last_updated_at=true&precision=2")
